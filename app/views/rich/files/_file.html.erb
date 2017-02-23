@@ -3,8 +3,8 @@
         src="<%= thumb_for_file(file) %>"
         data-uris="<%= file.uri_cache %>"
         data-rich-asset-id="<%= file.id %>"
-				data-rich-asset-type="<%= file.simplified_type %>"
-				data-rich-asset-name="<%= file.filename %>"
+        data-rich-asset-type="<%= file.simplified_type %>"
+        data-rich-asset-name="<%= file.filename %>"
   />
   <p data-update-url="<%= file_path(file) %>"
      data-input-placeholder="<%= t('filename_update_input_placeholder') %>"
