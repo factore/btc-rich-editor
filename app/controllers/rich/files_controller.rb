@@ -2,7 +2,7 @@ module Rich
   class FilesController < ApplicationController
 
     before_filter :authenticate_rich_user
-    before_filter :set_rich_file, only: [:show, :update, :destroy]
+    before_filter :set_rich_file, only: [:show, :destroy]
 
     layout "rich/application"
 
@@ -19,13 +19,7 @@ module Rich
         @items = @items.where('rich_file_file_name LIKE ?', "%#{params[:search]}%")
       end
 
-      if params[:alpha].present?
-        @items = @items.order("rich_file_file_name ASC")
-      else
-        @items = @items.order("created_at DESC")
-      end
-
-      @items = @items.page params[:page]
+      @items = @items.order("created_at DESC").page params[:page]
 
       # stub for new file
       @rich_asset = RichFile.new
@@ -75,16 +69,6 @@ module Rich
       end
 
       render :json => response, :content_type => "text/html"
-    end
-
-    def update
-      new_filename_without_extension = params[:filename].parameterize
-      if new_filename_without_extension.present?
-        new_filename = @rich_file.rename!(new_filename_without_extension)
-        render :json => { :success => true, :filename => new_filename, :uris => @rich_file.uri_cache }
-      else
-        render :nothing => true, :status => 500
-      end
     end
 
     def destroy
