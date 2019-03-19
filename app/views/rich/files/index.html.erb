@@ -35,13 +35,18 @@
 
 <ul id="items">
 
-  <li id="uploadBlock">
-    <div id="upload" class="qq-upload-button placeholder">
-      <div class="spinner"></div>
-    </div>
-    <p><%= t(:upload_a_file) %></p>
-  </li>
+  <% if @btc_type %>
+    <%= render :partial => "image", :collection => @items, :as => :file %>
+  <% else %>
 
-  <%= render :partial => "file", :collection => @items, :as => :file %>
+    <li id="uploadBlock">
+      <div id="upload" class="qq-upload-button placeholder">
+        <div class="spinner"></div>
+      </div>
+      <p><%= t(:upload_a_file) %></p>
+    </li>
+
+    <%= render :partial => "file", :collection => @items, :as => :file %>
+  <% end %>
 
 </ul>

@@ -188,6 +188,7 @@ header {
 		}
 
 		img {
+      max-width: 100%;
 			@include rounded;
 			@include box-shadow(0, 0, 4px, lighten($dark, 40%));
 		}
