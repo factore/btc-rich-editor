@@ -1,0 +1,13 @@
+<li class="clickable">
+  <img id="file<%= file.id %>"
+        class="btc-image"
+        src="<%= file.public_filename %>"
+        data-uris="<%= file.rich_editor_data_uris %>"
+        data-rich-asset-id="<%= file.id %>"
+        data-rich-asset-type="<%= file.simplified_type %>"
+        data-rich-asset-name="<%= file.filename %>"
+  />
+  <p data-input-placeholder="<%= t('filename_update_input_placeholder') %>">
+    <%= file.filename %>
+  </p>
+</li>
