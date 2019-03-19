@@ -36,7 +36,7 @@
 <ul id="items">
 
   <% if @btc_type %>
-    <%= render :partial => "image", :collection => @items, :as => :file %>
+    <%= render :partial => "btc_file", :collection => @items, :as => :file %>
   <% else %>
 
     <li id="uploadBlock">
